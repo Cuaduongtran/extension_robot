@@ -105,9 +105,6 @@ namespace microbit_robot {
 
         return responseLine
     }
-
-
-
     /**
      * Format the encoding of special characters in the url.
      * @param url The url that we want to format.
@@ -195,19 +192,11 @@ namespace microbit_robot {
         // Set the flag.
         esp8266Initialized = true
     }
-    export enum startbit_Colors {
-        //% block="Red"
-        Red = 0x01,
-        //% block="Green"
-        Green = 0x02,
-        //% block="Blue"
-        Blue = 0x03,
-        //% block="Black"
-        Black = 0x04,
-        //% block="White"
-        White = 0x05,
-        //% block="None"
-        None = 0x06
+    export enum motor_slot {
+        //% block="M1"
+        M1 = "1",
+        //% block="M2"
+        M2 = "2",
     }
     /**
      * Connect to WiFi router.
@@ -217,13 +206,11 @@ namespace microbit_robot {
     //% weight=27
     //% blockGap=8
     //% blockId=esp8266_connect_wifi
-    //% block="connect to WiFi: SSID %ssid Password %password"
-    export function connectWiFi(ssid: startbit_Colors, password: string) {
-        // Set to station mode.
-        sendCommand("AT+CWMODE=1", "OK")
+    //% block="Set motor: %ssid speed %password"
+    export function  Set_motor(ssid: motor_slot, password: number) {
 
         // Connect to WiFi router.
-        sendCommand("AT+CWJAP=\"" + ssid + "\",\"" + password + "\"", "OK", 20000)
+        sendCommand("M" + ssid + ";" + password + ",", "OK", 20000)
     }
 
 }

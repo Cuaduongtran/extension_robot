@@ -1,1 +1,1 @@
-<xml xmlns="https://developers.google.com/blockly/xml"><block type="pxt-on-start" id="9jBO*OSxZ^TQ=0!2jTIa" x="0" y="0"><statement name="HANDLER"><block type="esp8266_connect_wifi" id="PZPfH}p#cMm6Y6L94-9w"><value name="password"><shadow type="text" id="dP?k9W71d{#0lBcS8mi|"><field name="TEXT"></field></shadow></value></block></statement></block></xml>
+<xml xmlns="https://developers.google.com/blockly/xml"><block type="pxt-on-start" id="_`:[D%0ot^AUi}og)QXY" x="0" y="0"></block></xml>
