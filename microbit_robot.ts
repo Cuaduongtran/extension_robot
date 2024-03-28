@@ -73,6 +73,7 @@ namespace microbit_robot {
         //% block="S3"
         S3 = "3",
     }
+    
     //% weight=27
     //% blockGap=8
     //% blockId=Set_servo
@@ -109,5 +110,19 @@ namespace microbit_robot {
             rxData = serial.readString()
         }
             return rxData.length
+            
+    }
+    //% weight=27
+    //% blockGap=8
+    //% blockId=Serial_print
+    //% block="Serial print: %slot"
+    export function Serial_print(chff: string) {
+        // Connect to WiFi router.
+        let data = chff
+        serial.redirectToUSB()
+        serial.writeLine(data)
+        // Timeout.
+        microbit_robot.init(SerialPin.P0, SerialPin.P1, BaudRate.BaudRate115200)
+
     }
 }
