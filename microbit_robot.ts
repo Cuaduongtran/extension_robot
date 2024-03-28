@@ -199,6 +199,12 @@ namespace microbit_robot {
         // Set the flag.
         esp8266Initialized = true
     }
+    enum MyEnum {
+        //% block="M1"
+        M1="1",
+        //% block="M2"
+        M2="2"
+    }
     /**
      * Connect to WiFi router.
      * @param ssid Your WiFi SSID.
@@ -208,12 +214,6 @@ namespace microbit_robot {
     //% blockGap=8
     //% blockId=esp8266_connect_wifi
     //% block="connect to WiFi: SSID %ssid Password %password"
-    enum MyEnum {
-        //% block="M1"
-        M1,
-        //% block="M2"
-        M2
-    }
     export function connectWiFi(ssid: MyEnum, password: string) {
         // Set to station mode.
         sendCommand("AT+CWMODE=1", "OK")
