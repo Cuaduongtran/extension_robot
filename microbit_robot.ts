@@ -121,7 +121,6 @@ namespace microbit_robot {
         let data = ""
         data=chff + so
         serial.redirectToUSB()
-        serial.setBaudRate(BaudRate.BaudRate9600)
         serial.writeLine(data)
         // Timeout.
         microbit_robot.init(SerialPin.P0, SerialPin.P1, BaudRate.BaudRate115200)
