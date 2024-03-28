@@ -70,7 +70,7 @@ namespace microbit_robot {
         S1 = "1",
         //% block="S2"
         S2 = "2",
-        //% block="SS323"
+        //% block="S3"
         S3 = "3",
     }
     //% weight=27
@@ -83,5 +83,36 @@ namespace microbit_robot {
         // Connect to WiFi router.
         serial.writeLine("S" + slot + ";" + goc + ",")
         basic.pause(100)
+    }
+    export enum line_slot {
+        //% block="E1"
+        E1 = "1",
+        //% block="E2"
+        E2 = "2",
+        //% block="E3"
+        E3 = "3",
+        //% block="E4"
+        E4 = "4",
+        //% block="Light"
+        Light = "5",
+    }
+    //% weight=27
+    //% blockGap=8
+    //% blockId=read_line_sensor
+    //% block="Read line sensor: %slot"
+    export function read_line_sensor(slot: line_slot, timeout: number = 100) {
+
+        // Connect to WiFi router.
+        serial.writeLine("C" + slot + ";")
+        let timestamp = input.runningTime()
+        while (true) {
+            // Timeout.
+            rxData += serial.readString()
+            if (rxData.length>0)
+            if (input.runningTime() - timestamp > timeout) {
+                break
+            }
+        }
+            return rxData.length
     }
 }
