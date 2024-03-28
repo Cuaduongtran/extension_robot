@@ -4,9 +4,6 @@ namespace microbit_robot {
 
     // Buffer for data received from UART.
     let rxData = ""
-
-
-
     /**
      * Send AT command and wait for response.
      * Return true if expected response is received.
@@ -19,7 +16,6 @@ namespace microbit_robot {
     export function sendCommand(command: string, expected_response: string = null, timeout: number = 100): boolean {
         // Wait a while from previous command.
         basic.pause(10)
-
         // Flush the Rx buffer.
         serial.readString()
         rxData = ""
@@ -199,11 +195,19 @@ namespace microbit_robot {
         // Set the flag.
         esp8266Initialized = true
     }
-    enum MyEnum {
-        //% block="M1"
-        M1="1",
-        //% block="M2"
-        M2="2"
+    export enum startbit_Colors {
+        //% block="Red"
+        Red = 0x01,
+        //% block="Green"
+        Green = 0x02,
+        //% block="Blue"
+        Blue = 0x03,
+        //% block="Black"
+        Black = 0x04,
+        //% block="White"
+        White = 0x05,
+        //% block="None"
+        None = 0x06
     }
     /**
      * Connect to WiFi router.
@@ -214,7 +218,7 @@ namespace microbit_robot {
     //% blockGap=8
     //% blockId=esp8266_connect_wifi
     //% block="connect to WiFi: SSID %ssid Password %password"
-    export function connectWiFi(ssid: MyEnum, password: string) {
+    export function connectWiFi(ssid: startbit_Colors, password: string) {
         // Set to station mode.
         sendCommand("AT+CWMODE=1", "OK")
 
