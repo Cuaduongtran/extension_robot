@@ -115,10 +115,11 @@ namespace microbit_robot {
     //% weight=27
     //% blockGap=8
     //% blockId=Serial_print
-    //% block="Serial print: %slot"
-    export function Serial_print(chff: string) {
+    //% block="Serial print text: %chff number: %so "
+    export function Serial_print(chff: string, so:number) {
         // Connect to WiFi router.
-        let data = chff
+        let data = ""
+        data=chff + so
         serial.redirectToUSB()
         serial.writeLine(data)
         // Timeout.
