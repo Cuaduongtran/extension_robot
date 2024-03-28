@@ -23,9 +23,6 @@ namespace microbit_robot {
     export function isESP8266Initialized(): boolean {
         return esp8266Initialized
     }
-
-
-
     /**
      * Initialize the ESP8266.
      * @param tx Tx pin of micro:bit. eg: SerialPin.P16
@@ -68,5 +65,23 @@ namespace microbit_robot {
         serial.writeLine("M" + ssid + ";" + speed + ",")
         basic.pause(100)
     }
+    export enum servo_slot {
+        //% block="S1"
+        S1 = "1",
+        //% block="S2"
+        S2 = "2",
+        //% block="SS323"
+        S3 = "3",
+    }
+    //% weight=27
+    //% blockGap=8
+    //% blockId=Set_servo
+    //% block="Set servo: %slot speed %goc"
+    //% goc.min=0 goc.max=180
+    export function Set_servo(slot: motor_slot, goc: number) {
 
+        // Connect to WiFi router.
+        serial.writeLine("S" + slot + ";" + goc + ",")
+        basic.pause(100)
+    }
 }
