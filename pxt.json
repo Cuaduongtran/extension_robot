@@ -10,6 +10,7 @@
         "main.blocks",
         "main.ts",
         "README.md",
+        "microbit_robot.ts",
         "custom.ts"
     ],
     "testFiles": [
