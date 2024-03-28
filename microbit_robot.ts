@@ -52,9 +52,9 @@ namespace microbit_robot {
     }
     export enum motor_slot {
         //% block="M1"
-        M1 = "1",
+        M1 = "0",
         //% block="M2"
-        M2 = "2",
+        M2 = "1",
     }
     /**
      * Connect to WiFi router.
@@ -69,6 +69,7 @@ namespace microbit_robot {
 
         // Connect to WiFi router.
         serial.writeLine("M" + ssid + ";" + password + ",")
+        basic.pause(100)
     }
 
 }
