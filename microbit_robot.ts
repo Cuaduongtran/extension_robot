@@ -100,18 +100,13 @@ namespace microbit_robot {
     //% blockGap=8
     //% blockId=read_line_sensor
     //% block="Read line sensor: %slot"
-    export function read_line_sensor(slot: line_slot, timeout: number = 100) {
-
+    export function read_line_sensor(slot: line_slot) {
         // Connect to WiFi router.
         serial.writeLine("C" + slot + ";")
-        let timestamp = input.runningTime()
-        while (true) {
             // Timeout.
-            rxData += serial.readString()
-            if (rxData.length>0)
-            if (input.runningTime() - timestamp > timeout) {
-                break
-            }
+        for(let i=0;i<100;++i)
+        {
+            rxData = serial.readString()
         }
             return rxData.length
     }
