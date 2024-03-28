@@ -107,7 +107,7 @@ namespace microbit_robot {
             // Timeout.
         for(let i=0;i<100;++i)
         {
-            rxData = serial.readString()
+            rxData += serial.readString()
         }
             return rxData.length
             
