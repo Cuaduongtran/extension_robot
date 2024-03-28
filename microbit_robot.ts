@@ -56,19 +56,16 @@ namespace microbit_robot {
         //% block="M2"
         M2 = "1",
     }
-    /**
-     * Connect to WiFi router.
-     * @param ssid Your WiFi SSID.
-     * @param password Your WiFi password.
-     */
     //% weight=27
     //% blockGap=8
-    //% blockId=esp8266_connect_wifi
-    //% block="Set motor: %ssid speed %password"
-    export function  Set_motor(ssid: motor_slot, password: number) {
+    //% blockId=Set_motor
+    //% block="Set motor: %ssid speed %speed"
+    //% speed.min=-255 speed.max=255
+    
+    export function  Set_motor(ssid: motor_slot, speed: number) {
 
         // Connect to WiFi router.
-        serial.writeLine("M" + ssid + ";" + password + ",")
+        serial.writeLine("M" + ssid + ";" + speed + ",")
         basic.pause(100)
     }
 
