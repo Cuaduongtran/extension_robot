@@ -78,7 +78,7 @@ namespace microbit_robot {
     //% blockId=Set_servo
     //% block="Set servo: %slot speed %goc"
     //% goc.min=0 goc.max=180
-    export function Set_servo(slot: motor_slot, goc: number) {
+    export function Set_servo(slot: servo_slot, goc: number) {
 
         // Connect to WiFi router.
         serial.writeLine("S" + slot + ";" + goc + ",")
