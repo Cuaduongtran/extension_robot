@@ -37,6 +37,7 @@ namespace microbit_robot {
     //% block="initialize STEMVN microbit robot"
     export function init() {
         // Redirect the serial port.
+        basic.pause(100)
         serial.redirect(
             SerialPin.P0,
             SerialPin.P1,
@@ -47,6 +48,7 @@ namespace microbit_robot {
         ping = radio.receivedPacket(RadioPacketProperty.SerialNumber)
         // Reset the flag.
         serial.writeLine("STEMVN%*#"+ping)
+        basic.pause(100)
     }
     export enum motor_slot {
         //% block="M1"
@@ -68,7 +70,7 @@ namespace microbit_robot {
         serial.setTxBufferSize(32)
         serial.setRxBufferSize(32)
         // Connect to WiFi router.
-        serial.writeLine("STEMVNM" + ssid + ";" + speed + ",STEMVN")
+        serial.writeLine("M" + ssid + ";" + speed + ",")
         basic.pause(100)
     }
     export enum servo_slot {
@@ -94,7 +96,7 @@ namespace microbit_robot {
         serial.setTxBufferSize(32)
         serial.setRxBufferSize(32)
         // Connect to WiFi router.
-        serial.writeLine("STEMVNS" + slot + ";" + goc + ",STEMVN")
+        serial.writeLine("S" + slot + ";" + goc + ",")
         basic.pause(100)
     }
     export enum line_slot {
@@ -124,7 +126,7 @@ namespace microbit_robot {
         )
         serial.setTxBufferSize(32)
         serial.setRxBufferSize(32)
-        serial.writeLine("STEMVNC" + slot +";20,STEMVN")
+        serial.writeLine("C" + slot +";20,")
         a = serial.readUntil(serial.delimiters(Delimiters.Dollar))
         b = parseInt(a, 10)
         return b     
