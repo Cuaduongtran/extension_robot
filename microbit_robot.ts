@@ -155,9 +155,11 @@ namespace microbit_robot {
      * @param unit desired conversion unit
      * @param maxCmDistance maximum distance in centimeters (default is 500)
      */
-    //% blockId=sonar_ping block="ping trig %trig|echo %echo|unit %unit"
-    export function read_ultra(trig: DigitalPin, echo: DigitalPin, unit: PingUnit, maxCmDistance = 500): number {
+    //% blockId=sonar_ping block="Read Ultrasonic %unit"
+    export function read_ultra( unit: PingUnit, maxCmDistance = 500): number {
         // send pulse
+        let trig = DigitalPin.P14
+        let echo = DigitalPin.P13
         pins.setPull(trig, PinPullMode.PullNone);
         pins.digitalWritePin(trig, 0);
         control.waitMicros(2);
