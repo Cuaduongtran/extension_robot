@@ -70,7 +70,7 @@ namespace microbit_robot {
         serial.setTxBufferSize(32)
         serial.setRxBufferSize(32)
         // Connect to WiFi router.
-        serial.writeLine("M" + ssid + ";" + speed + ",")
+        serial.writeLine("M" + ssid + ";" + speed + ",STEMVN")
         basic.pause(100)
     }
     export enum servo_slot {
