@@ -34,7 +34,7 @@ namespace microbit_robot {
     //% weight=29
     //% blockGap=40
     //% blockId=esp8266_init
-    //% block="initialize STEMVN microbit robot: "
+    //% block="initialize STEMVN microbit robot"
     export function init() {
         // Redirect the serial port.
         serial.redirect(
@@ -68,7 +68,7 @@ namespace microbit_robot {
         serial.setTxBufferSize(32)
         serial.setRxBufferSize(32)
         // Connect to WiFi router.
-        serial.writeLine("M" + ssid + ";" + speed + ",")
+        serial.writeLine("STEMVNM" + ssid + ";" + speed + ",STEMVN")
         basic.pause(100)
     }
     export enum servo_slot {
@@ -94,7 +94,7 @@ namespace microbit_robot {
         serial.setTxBufferSize(32)
         serial.setRxBufferSize(32)
         // Connect to WiFi router.
-        serial.writeLine("S" + slot + ";" + goc + ",")
+        serial.writeLine("STEMVNS" + slot + ";" + goc + ",STEMVN")
         basic.pause(100)
     }
     export enum line_slot {
@@ -124,7 +124,7 @@ namespace microbit_robot {
         )
         serial.setTxBufferSize(32)
         serial.setRxBufferSize(32)
-        serial.writeLine("C" + slot+";20,")
+        serial.writeLine("STEMVNC" + slot +";20,STEMVN")
         a = serial.readUntil(serial.delimiters(Delimiters.Dollar))
         b = parseInt(a, 10)
         return b     
