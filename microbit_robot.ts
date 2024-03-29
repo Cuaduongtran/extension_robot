@@ -56,6 +56,7 @@ namespace microbit_robot {
         serial.writeLine("STEMVN%*#"+ping)
         basic.pause(100)
     }
+    /** 
     export enum motor_slot {
         //% block="M1"
         M1 = "0",
@@ -154,7 +155,7 @@ namespace microbit_robot {
      * @param echo echo pin
      * @param unit desired conversion unit
      * @param maxCmDistance maximum distance in centimeters (default is 500)
-     */
+     
     //% blockId=sonar_ping block="Read Ultrasonic %unit"
     //% subcategory=Sensor
     export function read_ultra( unit: PingUnit, maxCmDistance = 500): number {
