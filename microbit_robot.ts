@@ -61,6 +61,7 @@ namespace microbit_robot {
     //% blockId=Set_motor
     //% block="Set motor: %ssid speed %speed"
     //% speed.min=-255 speed.max=255
+    //% subcategory=Servo/Motor
     export function  Set_motor(ssid: motor_slot, speed: number) {
         serial.redirect(
             SerialPin.P0,
@@ -87,6 +88,7 @@ namespace microbit_robot {
     //% blockId=Set_servo
     //% block="Set servo: %slot speed %goc"
     //% goc.min=0 goc.max=180
+    //% subcategory=Servo/Motor
     export function Set_servo(slot: servo_slot, goc: number) {
         serial.redirect(
             SerialPin.P0,
@@ -117,6 +119,7 @@ namespace microbit_robot {
     //% blockGap=8
     //% blockId=read_line_sensor
     //% block="Read line sensor: %slot"
+    //% subcategory=Sensor
     export function read_line_sensor(slot: line_slot) {
         // Connect to WiFi router.
         serial.redirect(
@@ -135,6 +138,7 @@ namespace microbit_robot {
     //% blockGap=8
     //% blockId=Serial_print
     //% block="Serial print text: %chff number: %so "
+    //% subcategory=Serial
     export function Serial_print(chff: string, so:number) {
         // Connect to WiFi router.
         let data = ""
