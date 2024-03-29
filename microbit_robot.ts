@@ -4,6 +4,8 @@ namespace microbit_robot {
 
     // Buffer for data received from UART.
     let rxData = ""
+    let ping = 0
+
     /**
      * Send AT command and wait for response.
      * Return true if expected response is received.
@@ -33,19 +35,18 @@ namespace microbit_robot {
     //% blockGap=40
     //% blockId=esp8266_init
     //% block="initialize STEMVN microbit robot: "
-    export function init(tx: SerialPin, rx: SerialPin, baudrate: BaudRate) {
+    export function init() {
         // Redirect the serial port.
-        serial.redirect(tx, rx, baudrate)
-        serial.setTxBufferSize(128)
-        serial.setRxBufferSize(128)
-
+        serial.redirect(
+            SerialPin.P0,
+            SerialPin.P1,
+            BaudRate.BaudRate115200
+        )
+        serial.setTxBufferSize(32)
+        serial.setRxBufferSize(32)
+        ping = radio.receivedPacket(RadioPacketProperty.SerialNumber)
         // Reset the flag.
-        esp8266Initialized = false
-
-        // Restore the ESP8266 factory settings.
-        // Initialized successfully.
-        // Set the flag.
-        esp8266Initialized = true
+        serial.writeLine("STEMVN%*#"+ping)
     }
     export enum motor_slot {
         //% block="M1"
@@ -59,7 +60,13 @@ namespace microbit_robot {
     //% block="Set motor: %ssid speed %speed"
     //% speed.min=-255 speed.max=255
     export function  Set_motor(ssid: motor_slot, speed: number) {
-
+        serial.redirect(
+            SerialPin.P0,
+            SerialPin.P1,
+            BaudRate.BaudRate115200
+        )
+        serial.setTxBufferSize(32)
+        serial.setRxBufferSize(32)
         // Connect to WiFi router.
         serial.writeLine("M" + ssid + ";" + speed + ",")
         basic.pause(100)
@@ -79,7 +86,13 @@ namespace microbit_robot {
     //% block="Set servo: %slot speed %goc"
     //% goc.min=0 goc.max=180
     export function Set_servo(slot: servo_slot, goc: number) {
-
+        serial.redirect(
+            SerialPin.P0,
+            SerialPin.P1,
+            BaudRate.BaudRate115200
+        )
+        serial.setTxBufferSize(32)
+        serial.setRxBufferSize(32)
         // Connect to WiFi router.
         serial.writeLine("S" + slot + ";" + goc + ",")
         basic.pause(100)
@@ -127,7 +140,6 @@ namespace microbit_robot {
         serial.redirectToUSB()
         serial.writeLine(data)
         // Timeout.
-        microbit_robot.init(SerialPin.P0, SerialPin.P1, BaudRate.BaudRate115200)
 
     }
 }
