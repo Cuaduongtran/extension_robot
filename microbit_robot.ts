@@ -1,15 +1,9 @@
+
 /**
  * microbit_robot
  */
 //% weight=100 color=#f86909 icon="\uf013"
-enum PingUnit {
-    //% block="μs"
-    MicroSeconds,
-    //% block="cm"
-    Centimeters,
-    //% block="inches"
-    Inches
-}
+
 namespace microbit_robot {
     // Flag to indicate whether the ESP8266 was initialized successfully.
     let esp8266Initialized = false
@@ -145,6 +139,14 @@ namespace microbit_robot {
         a = serial.readUntil(serial.delimiters(Delimiters.Dollar))
         b = parseInt(a, 10)
         return b     
+    }
+    export enum PingUnit {
+        //% block="μs"
+        MicroSeconds,
+        //% block="cm"
+        Centimeters,
+        //% block="inches"
+        Inches
     }
     /**
      * Send a ping and get the echo time (in microseconds) as a result
