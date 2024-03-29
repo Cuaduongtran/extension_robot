@@ -1,7 +1,7 @@
 /**
  * microbit_robot
  */
-//% weight=100 color=#f86909 icon="f882"
+//% weight=100 color=#f86909 icon="\uf013"
 namespace microbit_robot {
     // Flag to indicate whether the ESP8266 was initialized successfully.
     let esp8266Initialized = false
