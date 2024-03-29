@@ -96,12 +96,12 @@ namespace microbit_robot {
         //% block="Light"
         Light = "5",
     }
+    let a = ""
+    let b = 0
     //% weight=27
     //% blockGap=8
     //% blockId=read_line_sensor
     //% block="Read line sensor: %slot"
-    let a = ""
-    let b = 0
     export function read_line_sensor(slot: line_slot) {
         // Connect to WiFi router.
         serial.redirect(
