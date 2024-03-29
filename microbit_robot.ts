@@ -58,7 +58,6 @@ namespace microbit_robot {
     //% blockId=Set_motor
     //% block="Set motor: %ssid speed %speed"
     //% speed.min=-255 speed.max=255
-    
     export function  Set_motor(ssid: motor_slot, speed: number) {
 
         // Connect to WiFi router.
@@ -101,16 +100,21 @@ namespace microbit_robot {
     //% blockGap=8
     //% blockId=read_line_sensor
     //% block="Read line sensor: %slot"
+    let a = ""
+    let b = 0
     export function read_line_sensor(slot: line_slot) {
         // Connect to WiFi router.
-        serial.writeLine("C" + slot + ";")
-            // Timeout.
-        for(let i=0;i<100;++i)
-        {
-            rxData += serial.readString()
-        }
-            return rxData.length
-            
+        serial.redirect(
+            SerialPin.P0,
+            SerialPin.P1,
+            BaudRate.BaudRate115200
+        )
+        serial.setTxBufferSize(32)
+        serial.setRxBufferSize(32)
+        serial.writeLine("C" + slot+";20,")
+        a = serial.readUntil(serial.delimiters(Delimiters.Dollar))
+        b = parseInt(a, 10)
+        return b     
     }
     //% weight=27
     //% blockGap=8
