@@ -138,6 +138,34 @@ namespace microbit_robot {
         b = parseInt(a, 10)
         return b     
     }
+    let distanceBak = 0;
+    /**
+     * Get the distance of ultrasonic detection to the obstacle 
+     */
+    //% weight=90 blockId=startbit_ultrasonic  block="Read ultrasonic|distance(cm)"
+    //% subcategory=Sensor
+    export function startbit_ultrasonic(): number {
+        let echoPin: DigitalPin.P9;
+        let trigPin: DigitalPin.P8;
+        pins.setPull(echoPin, PinPullMode.PullNone);
+        pins.setPull(trigPin, PinPullMode.PullNone);
+
+        pins.digitalWritePin(trigPin, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(trigPin, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(trigPin, 0);
+        control.waitMicros(5);
+        let d = pins.pulseIn(echoPin, PulseValue.High, 25000);
+        let distance = d;
+        // filter timeout spikes
+        if (distance == 0 && distanceBak != 0) {
+            distance = distanceBak;
+        }
+        distanceBak = d;
+
+        return Math.round(distance * 10 / 6 / 58 / 1.6);
+    }
     //% weight=27
     //% blockGap=8
     //% blockId=Serial_print
