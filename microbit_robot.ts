@@ -2,11 +2,10 @@
 /**
  * microbit_robot
  */
-//% weight=100 color=#f86909 icon="\uf013"
+//% weight=100 color=#f86909 icon=""
 
 namespace microbit_robot {
     // Flag to indicate whether the ESP8266 was initialized successfully.
-    let esp8266Initialized = false
 
     // Buffer for data received from UART.
     let rxData = ""
@@ -28,9 +27,6 @@ namespace microbit_robot {
     //% blockGap=8
     //% blockId=esp8266_is_esp8266_initialized
     //% block= STEMVN initialized"
-    export function isESP8266Initialized(): boolean {
-        return esp8266Initialized
-    }
     /**
      * Initialize the ESP8266.
      * @param tx Tx pin of micro:bit. eg: SerialPin.P16
