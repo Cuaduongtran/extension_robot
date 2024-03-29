@@ -19,7 +19,7 @@ namespace microbit_robot {
     //% weight=30
     //% blockGap=8
     //% blockId=esp8266_is_esp8266_initialized
-    //% block="ESP8266 initialized"
+    //% block= STEMVN initialized"
     export function isESP8266Initialized(): boolean {
         return esp8266Initialized
     }
@@ -32,7 +32,7 @@ namespace microbit_robot {
     //% weight=29
     //% blockGap=40
     //% blockId=esp8266_init
-    //% block="initialize ESP8266: Tx %tx Rx %rx Baudrate %baudrate"
+    //% block="initialize STEMVN microbit robot: "
     export function init(tx: SerialPin, rx: SerialPin, baudrate: BaudRate) {
         // Redirect the serial port.
         serial.redirect(tx, rx, baudrate)
