@@ -177,6 +177,7 @@ namespace microbit_robot {
             default: return d;
         }
     }
+    /** 
     //% weight=27
     //% blockGap=8
     //% blockId=Serial_print
@@ -190,5 +191,6 @@ namespace microbit_robot {
         serial.setRxBufferSize(32)
         serial.writeLine(data)
     }
+    */
 
 }
