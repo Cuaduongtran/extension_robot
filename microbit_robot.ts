@@ -156,6 +156,7 @@ namespace microbit_robot {
      * @param maxCmDistance maximum distance in centimeters (default is 500)
      */
     //% blockId=sonar_ping block="Read Ultrasonic %unit"
+    //% subcategory=Sensor
     export function read_ultra( unit: PingUnit, maxCmDistance = 500): number {
         // send pulse
         let trig = DigitalPin.P14
