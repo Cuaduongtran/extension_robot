@@ -51,7 +51,7 @@ namespace microbit_robot {
         )
         serial.setTxBufferSize(32)
         serial.setRxBufferSize(32)
-        ping = radio.receivedPacket(RadioPacketProperty.SerialNumber)
+        ping = 0
         // Reset the flag.
         serial.writeLine("STEMVN%*#"+ping)
         basic.pause(100)
