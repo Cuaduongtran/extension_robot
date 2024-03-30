@@ -10,9 +10,7 @@ namespace microbit_robot {
     // Buffer for data received from UART.
     let rxData = ""
     let ping = 0
-    export function isESP8266Initialized(): boolean {
-        return esp8266Initialized
-    }
+
     /**
      * Send AT command and wait for response.
      * Return true if expected response is received.
@@ -29,6 +27,9 @@ namespace microbit_robot {
     //% blockGap=8
     //% blockId=esp8266_is_esp8266_initialized
     //% block= STEMVN initialized"
+    export function isESP8266Initialized(): boolean {
+        return esp8266Initialized
+    }
     /**
      * Initialize the ESP8266.
      * @param tx Tx pin of micro:bit. eg: SerialPin.P16
