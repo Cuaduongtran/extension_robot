@@ -2,13 +2,9 @@
     "name": "extension_robot",
     "description": "",
     "dependencies": {
-        "core": "*",
-        "microphone": "*",
-        "MakerBit-Ultrasonic": "github:1010technologies/pxt-makerbit-ultrasonic#v1.0.8",
-        "radio": "*"
+        "core": "*"
     },
     "files": [
-        "main.blocks",
         "main.ts",
         "README.md",
         "microbit_robot.ts"

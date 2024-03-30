@@ -43,19 +43,6 @@ namespace microbit_robot {
             default: return d;
         }
     }
-    //% weight=27
-    //% blockGap=8
-    //% blockId=Serial_print
-    //% block="Serial print text: %buff number: %so "
-    //% subcategory=Serial
-    export function Serial_print(buf: string, so:number) {
-        // Connect to WiFi router.
-        let data =buf+so
-        serial.redirectToUSB()
-        serial.setTxBufferSize(32)
-        serial.setRxBufferSize(32)
-        serial.writeLine(data)
-    }
 }
 // Auto-generated. Do not edit.
 
