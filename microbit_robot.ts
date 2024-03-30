@@ -268,7 +268,7 @@ namespace microbit_robot {
         const buf = pins.createBuffer(16);
         buf.setNumber(NumberFormat.Int32BE, 6, ns);
         buf.setNumber(NumberFormat.Int32BE, 12, instance);
-        // bluetooth.advertiseUidBuffer(buf, power, connectable);
+        bluetooth.advertiseUidBuffer(buf, power, connectable);
     }
 }
 // Auto-generated. Do not edit.
