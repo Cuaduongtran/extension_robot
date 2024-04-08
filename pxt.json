@@ -7,7 +7,8 @@
     "files": [
         "main.ts",
         "README.md",
-        "microbit_robot.ts"
+        "microbit_robot.ts",
+        "main.py"
     ],
     "testFiles": [
         "test.ts"

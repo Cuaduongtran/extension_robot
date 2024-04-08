@@ -9,7 +9,6 @@ namespace microbit_robot {
     let esp8266Initialized = false
     // Buffer for data received from UART.
     let rxData = ""
-    let ping = 0
 
     /**
      * Send AT command and wait for response.
@@ -29,6 +28,9 @@ namespace microbit_robot {
     //% block= STEMVN initialized"
     export function isESP8266Initialized(): boolean {
         return esp8266Initialized
+    }
+    export function getRandomInteger(min: number, max: number) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     /**
      * Initialize the ESP8266.
@@ -50,10 +52,13 @@ namespace microbit_robot {
         )
         serial.setTxBufferSize(32)
         serial.setRxBufferSize(32)
-        ping = 0
         // Reset the flag.
-        serial.writeLine("STEMVN%*#" + ping)
+        serial.writeLine("STE;MVN%,")
+        let ping = serial.readUntil(serial.delimiters(Delimiters.Dollar))
         basic.pause(100)
+        serial.writeLine(ping)
+        basic.pause(100)
+       
     }
     export enum motor_slot {
         //% block="M1"
@@ -77,7 +82,7 @@ namespace microbit_robot {
         serial.setRxBufferSize(32)
         // Connect to WiFi router.
         serial.writeLine("M" + ssid + ";" + speed + ",")
-        basic.pause(100)
+        basic.pause(10)
     }
     export enum servo_slot {
         //% block="S1"
@@ -104,7 +109,7 @@ namespace microbit_robot {
         serial.setRxBufferSize(32)
         // Connect to WiFi router.
         serial.writeLine("S" + slot + ";" + goc + ",")
-        basic.pause(100)
+        basic.pause(10)
     }
     export enum line_slot {
         //% block="E1"
@@ -159,7 +164,7 @@ namespace microbit_robot {
     export function read_ultra(unit: PingUnit, maxCmDistance = 500): number {
         // send pulse
         let trig = DigitalPin.P14
-        let echo = DigitalPin.P13
+        let echo = DigitalPin.P15
         pins.setPull(trig, PinPullMode.PullNone);
         pins.digitalWritePin(trig, 0);
         control.waitMicros(2);
